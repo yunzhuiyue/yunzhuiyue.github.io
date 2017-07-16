@@ -1,9 +1,9 @@
-.z_hide{
-    display: none;       
+.z_hide {
+  display: none;
 }
 .body-wrap {
-  min-height: calc(100vh - 184px);
+  min-height: 100vh;
 }
-.footer p span:not(:first-child):before{
-    content: "|";
+.footer p span:not(:first-child):before {
+  content: "|";
 }

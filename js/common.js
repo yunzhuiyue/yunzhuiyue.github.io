@@ -52,6 +52,9 @@ var getHTML = function(url, fn){
         url: url,
         success: function(res){
             fn(res);
+            document.querySelectorAll('.fade, .fade-scale').forEach(function(item){
+                item.classList.add('in');
+            });
         }
     });
 };
@@ -72,13 +75,25 @@ var insertScript = function(dom, scriptArr){
         script.src = scriptArr[i];
         dom.appendChild(script);
     }
-}
+};
+var loadContenter = function(url, fn){
+    getHTML(url, fn);
+};
 getHTML('../common/header.html', function(header){
     document.querySelector('head').innerHTML += header;
 });
 getHTML('../common/menu.html', function(menu){
     document.querySelector('body').innerHTML += menu;
     insertScript(document.querySelector('body'), scriptArr);
+    document.querySelectorAll('.z-go').forEach(function(item){
+        item.addEventListener('click', function(){
+            var url = item.getAttribute('data-url');
+            loadContenter(url, function(res){
+                document.querySelector('#main').innerHTML = res;
+                insertScript(document.querySelector('#main'), ["//unpkg.com/hexo-theme-material-indigo@latest/js/main.js"]);
+            });
+        });
+    });
 });
 
 (function() {
