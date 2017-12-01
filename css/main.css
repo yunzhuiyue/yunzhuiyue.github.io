@@ -1,9 +1,0 @@
-.z_hide {
-  display: none;
-}
-.body-wrap {
-  min-height: 100vh;
-}
-.footer p span:not(:first-child):before {
-  content: "|";
-}
